@@ -1,11 +1,15 @@
 const express = require("express");
 const cors = require("cors");
+const routes = require("./routes/index");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// call all my routes here
+routes(app);
 
 // handle all errors
 app.use("/", (err, req, res, next) =>
