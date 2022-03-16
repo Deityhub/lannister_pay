@@ -1,15 +1,18 @@
 {
   "name": "lannister_pay",
   "version": "1.0.0",
-  "description": "",
+  "description": "A transaction fee processing service based on custom fee configuration spec",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Jude Ojini <judoc96@gmail.com>",
+  "contributors": [
+    "Jude Ojini <judoc96@gmail.com>"
+  ],
+  "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.3"
