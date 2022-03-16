@@ -1,5 +1,5 @@
 # Pull base image nodejs image.
-FROM node:12-alpine
+FROM node:16-alpine
 LABEL Author Jude Ojini <judoc96@gmail.com>
 
 RUN mkdir -p /usr/src/app
