@@ -14,6 +14,12 @@ function readFileContent(filePath) {
         }
         resolve(data);
       });
+    } else {
+      const error = new Error(
+        "Fee configuration spec not found, please create one"
+      );
+      error.code = 400;
+      reject(error);
     }
   });
 }

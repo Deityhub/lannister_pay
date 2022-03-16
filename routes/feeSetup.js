@@ -9,9 +9,9 @@ router.post("/fees", async (req, res) => {
     const { FeeConfigurationSpec } = req.body;
 
     if (!FeeConfigurationSpec) {
-      return res.status(400).send({
-        Error: "Please provide fee configuration spec",
-      });
+      const error = new Error("Please provide fee configuration spec");
+      error.code = 400;
+      throw error;
     }
 
     const parsedSpec = parseSpec(FeeConfigurationSpec);
@@ -24,7 +24,7 @@ router.post("/fees", async (req, res) => {
       status: "ok",
     });
   } catch (error) {
-    return res.status(500).send({
+    return res.status(error.code || 500).send({
       Error: error.message || "Some error occurred while parsing the spec",
     });
   }

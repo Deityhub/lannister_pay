@@ -23,16 +23,16 @@ router.post("/compute-transaction-fee", async (req, res) => {
 
     const transactionFee = computeTransactionFee(payload, feeSpec);
     if (!transactionFee) {
-      return res.status(400).send({
-        Error: "No fee configuration for the transaction.",
-      });
+      const error = new Error("No fee configuration for the transaction.");
+      error.code = 400;
+      throw error;
     }
 
     transactionFeeStore.set(payload.ID, transactionFee);
 
     return res.status(200).send(transactionFee);
   } catch (error) {
-    return res.status(500).send({
+    return res.status(error.code || 500).send({
       Error:
         error.message || "Some error occurred while computing transaction fee",
     });
